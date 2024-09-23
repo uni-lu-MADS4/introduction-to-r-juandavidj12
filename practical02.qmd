@@ -1,7 +1,7 @@
 ---
 title: "Getting started with R"
-author: Your name here
-date: today
+author: Juan David Jaramillo
+date: 23/09/2024
 format: html
 ---
 
@@ -11,7 +11,7 @@ format: html
 
 ```{r}
 # Your answer in code
-
+c("A","B","C")
 ```
 > Your answer as text
 
@@ -20,41 +20,43 @@ format: html
 * Assign the vector to a variable `my_letters`
 ```{r}
 # Your answer in code
-
+my_letters<-c("A","B","C")
 ```
 
 
 * Check the what happens when you run `letters` (just this) on the command line.
 ```{r}
 # Your answer in code
-
+letters
 ```
 
 > Your answer as text
 
-
+It appears a vector contained all the letter of alphabet
 
 * What happens when you concatenate two vectors? Add `c(my_letters , my_letters)`
 ```{r}
 # Your answer in code
-
+c(my_letters,my_letters)
 
 ```
 
 > Your answer as text
 
-
+It duplicates the vector
 
 * Add the number 1 to letters. What happens to the type of the vector?
 ```{r}
 # Your answer in code
 
-
+my_letters<-c(1,my_letters)
+my_letters
+typeof(my_letters)
 ```
 
 > Your answer as text
 
-
+It becomes as character
 
 ### Exercise 2
 
@@ -65,10 +67,12 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
+#1 
+my_vec<-c(1:8)
+#2
+my_vec<-my_vec+2
+#3
+my_vec + c(1:4)
 
 ```
 
@@ -95,25 +99,37 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
-
-
+#1
+matrix(c(4,9,10,1,5,7),ncol=2,nrow=3)
+#2
+A<-as.matrix(matrix(c(4,9,10,1,5,7),ncol=2,nrow=3))
+#3
+dim(A)
+#4
+A[5]
+#5
+A<-cbind(A,c(0,0,0))
+A
+#6
+A[4]<-0
+A
+#7
+t(A)
 ```
 
 
-8. Are any values in `A` larger than 10? 
+8. Are any values in `A` larger than 10?  R:No. 
 ```{r}
 # Your answer in code
-
+A>10
+#or
+A[A>10]
 ```
 
-9. Are all values in `A` smaller than 10?
+9. Are all values in `A` smaller than 10? R:No
 ```{r}
 # Your answer in code
-
+A<10
 ```
 
 ### Exercise 4
@@ -123,10 +139,14 @@ format: html
 ```{r}
 # Your answer in code
 
+myfunction<- function(x,y) {
+  x<-as.numeric(x)
+  y<-as.numeric(y)
+  print(x+y)
+}
 
-
-
-
+myfunction(3,4)
+myfunction("3","4")
 ```
 
 
@@ -136,9 +156,15 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
+myfunction2<-function(x){
+  x<-as.vector(x)
+  x<-as.numeric(x)
+  print(paste("The mean is",mean(x)))
+  print(paste("The median is",median(x)))
+  print(paste("The Standard deviation is",sd(x)))
+}
+test<-c(1:10)
+myfunction2(test)
 ```
 
 
@@ -148,8 +174,8 @@ The output of `c('1' , "a", NA, "2", NA)` should be 2.
 
 ```{r}
 # Your answer in code
-
-
+x<- c('1' , "a", NA, "2", NA)   #Here you put any vector, in this case the one given in the exercise
+x[is.na(x)] |> length()
 
 ```
 
